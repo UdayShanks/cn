@@ -1,0 +1,14 @@
+import socket
+
+HOST = "127.0.0.1"  # localhost
+PORT = 53
+
+s=socket.socket(socket.AF_INET, socket.SOCK_STREAM) 
+s.bind((HOST, PORT))
+print("Server listening on port", PORT)
+s.listen()
+c, addr = s.accept()
+with c:
+  print("Connected to", addr)
+  data = c.recv(1024)
+  print("Received:", data.decode())
